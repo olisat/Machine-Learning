@@ -1,0 +1,62 @@
+Write a Python program for the logistic discrimination gradient
+descent algorithm with L2-norm regularization. The error function to minimize is as follows:
+   E = sum_{i=1}^n [- r_i log(sigmoid(w^T x_i + w0)) - (1- r_i) log(1-sigmoid(w^T x_i + w0)) ] + (lambda/2) sum_{j=1}^m w_j^2 where w^T = (w_1,w_2,...w_m)
+   
+The modified gradient for regularization is computed as follows:
+   del_E/ del_w_j = - sum_{i=1}^n  [ x_{ij} (r_i - sigmoid(w^T x_i + w0)) ] + lambda * w_j  for j = 1,2,...m
+   del_E/ del_w_0 = - sum_{i=1}^n  (r_i - sigmoid(w^T x_i + w0)) 
+Note that you should update w_j by eta * (- del_E/ del_w_j) in each step.
+   
+The input should be the same as for Least squares. Do not convert 0 to negative labels. They must remain 0 for the logistic 
+regression gradient descent.
+
+There are 2 parts to this assignment.
+
+In the first part, set lambda = 0 to predict labels for data not in the training set as you had done before in previous assignments.
+You can test your data with the following input you had used previously.
+
+0 0
+0 1
+1 0
+1 1
+10 10
+10 11
+11 10
+11 11
+
+and labels
+
+0 0
+0 1
+0 2
+0 3
+1 4
+1 5
+1 6
+1 7
+
+
+Use eta=.01 and stopping condition of .0000001. 
+
+Your final w would be close to the one shown below. 
+
+w = 0.957672135162093 0.956767618860693 
+||w||=1.35371348333622
+distance to origin = -6.83744723331703
+
+You should also check your predictions for climate data with trainlabels.0 against the expected results posted in Moodle.
+
+In the second part of the assignment, you will be dividing the training label data into 2 sets one for training i.e. for determining the model
+parameters and the other for cross validation i.e. for predicting the labels. You should compute training error, cross-validation error, total error 
+as well as number of misclassifications (training, cross-validation and total); note these errors will not include regularization terms. 
+You should do this for lambda = 0, 0.25, 0.5, 1.0, 1.5, 2.0 and 5.0 
+You need to repeat this when training set is 1/4, 1/2 and 3/4 of the given label set. Determine which value of lambda gives mimimum error for each of these 
+3 partitions for the climate data with trainlabels.0 file.
+Submit the results of second part of assignment in a text file.
+ 
+Submit your assignment by copying it into the directory
+/afs/cad/courses/ccs/f18/cs/675/101/<ucid>.
+For example if your ucid is abc12 then copy your solution into 
+/afs/cad/courses/ccs/f18/cs/675/101/abc12.
+
+Your completed script is due Nov 1 2018
